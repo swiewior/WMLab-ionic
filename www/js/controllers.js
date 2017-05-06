@@ -16,18 +16,44 @@ function ($scope, $stateParams) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, StorageService, $localStorage, $sessionStorage) {
   
-  
   $scope.$storage = $localStorage;
   
+  $scope.create = create;
   
-
-  $scope.things = StorageService.getAll();
-  $scope.add = function (newThing) {
-    StorageService.add(newThing);
-  };
-  $scope.remove = function (thing) {
-    StorageService.remove(thing);
-  };
+  function create() {
+    var counter = $localStorage.counter;
+    $localStorage.counter += 1;
+  
+    var test = {
+      id: counter,
+      date: "2017-05-07",
+      completed: "no",
+      l0: 100,
+      d0: 10.20,
+      du: 5.50,
+      lu: 125,
+      pm: 3700,
+      pel: 27600,
+      peh: 31300,
+      pu: 28000,
+      iput: [{id: 1, p: 100, l1: 0, l2: 0}],
+      s0: null,
+      su: null,
+      a10: null,
+      z: null,
+      rh: null,
+      rel: null,
+      reh: null,
+      rm: null,
+      ru: null,
+      e: null,
+      output: [{id: null, p: null, l1: null, l2: null}],
+    };
+    
+    $localStorage.tests.push(test);
+    
+    $localStorage.test = $localStorage.tests[counter-1];
+  }
   
 }])
 

@@ -9055,7 +9055,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             futureParentElement = hasElementTranscludeDirective ? $element.parent() : $element;
           }
           if (slotName) {
-            // slotTranscludeFn can be one of three things:
+            // slotTranscludeFn can be one of three data:
             //  * a transclude function - a filled slot
             //  * `null` - an optional slot that was not filled
             //  * `undefined` - a slot that was not declared (i.e. invalid)
@@ -17595,7 +17595,7 @@ function adjustMatchers(matchers) {
  * Typically, you would configure or override the {@link ng.$sceDelegate $sceDelegate} instead of
  * the `$sce` service to customize the way Strict Contextual Escaping works in AngularJS.  This is
  * because, while the `$sce` provides numerous shorthand methods, etc., you really only need to
- * override 3 core functions (`trustAs`, `getTrusted` and `valueOf`) to replace the way things
+ * override 3 core functions (`trustAs`, `getTrusted` and `valueOf`) to replace the way data
  * work because `$sce` delegates to `$sceDelegate` for these operations.
  *
  * Refer {@link ng.$sceDelegateProvider $sceDelegateProvider} to configure this service.
@@ -27645,7 +27645,7 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
       trackBy: trackBy,
       getTrackByValue: getTrackByValue,
       getWatchables: $parse(valuesFn, function(optionValues) {
-        // Create a collection of things that we would like to watch (watchedArray)
+        // Create a collection of data that we would like to watch (watchedArray)
         // so that they can all be watched using a single $watchCollection
         // that only runs the handler once if anything changes
         var watchedArray = [];

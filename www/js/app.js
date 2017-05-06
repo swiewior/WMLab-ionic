@@ -84,17 +84,18 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 
 .factory ('StorageService', function ($localStorage) {
   $localStorage = $localStorage.$default({
-    things: []
+    counter: 0,
+    tests: [],
   });
   
   var _getAll = function () {
-    return $localStorage.things;
+    return $localStorage.data;
   };
   var _add = function (thing) {
-    $localStorage.things.push(thing);
+    $localStorage.data.push(thing);
   };
   var _remove = function (thing) {
-    $localStorage.things.splice($localStorage.things.indexOf(thing), 1);
+    $localStorage.data.splice($localStorage.data.indexOf(thing), 1);
   };
   return {
     getAll: _getAll,

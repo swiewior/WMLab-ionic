@@ -10,37 +10,19 @@
           <div class="col">Completed?</div>
           <div class="col"></div>
         </div>
-        <div class="row" ng-repeat="data in ctrl.data">
-          <div class="col">{{data.id}}</div>
-          <div class="col">{{data.code}}</div>
-          <div class="col">LK {{data.limit}}</div>
-          <div class="col">{{data.account}}</div>
+        <div class="row" ng-repeat="test in $storage.tests">
+          <div class="col">{{test.id}}</div>
+          <div class="col">{{test.date}}</div>
+          <div class="col">{{test.completed}}</div>
           <div class="col">
             <button class="button button-positive" ng-click="ctrl.edit(data.id)">Edit</button>
-            <button class="button button-assertive" ng-click="ctrl.remove(data.id)">Add</button>
+            <button class="button button-assertive" ng-click="ctrl.remove(data.id)">Remove</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="list">
-      <div class="item item-input-inset">
-        <label class="item-input-wrapper">
-          <input type="text" placeholder="anything to save" ng-model="newThing">
-        </label>
-        <button class="button button-clear button-positive icon" ng-click="add(newThing)">
-          <i class="ion-ios-plus-outline"></i> Add
-        </button>
-      </div>
-    </div>
-
-    <ion-list show-delete="false" can-swipe="true">
-      <ion-item ng-repeat="thing in things">
-        {{thing}}
-        <ion-option-button class="button-assertive ion-trash-b" ng-click="remove(thing)"></ion-option-button>
-      </ion-item>
-    </ion-list>
-
+    <button class="button button-positive" ng-click="create()">create</button>
     <a ui-sref="menu.wizardStep1" id="tensileTest-button7" class="button button-positive  button-block icon-left ion-wand">Run Test Wizard</a>
     <button id="tensileTest-button10" class="button button-positive  button-block icon-left ion-android-upload">Upload data from file</button>
   </ion-content>

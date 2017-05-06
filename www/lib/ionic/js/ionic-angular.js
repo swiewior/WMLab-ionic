@@ -1517,7 +1517,7 @@ function($rootScope, $state, $location, $document, $ionicPlatform, $ionicHistory
  * @name $ionicConfigProvider
  * @module ionic
  * @description
- * Ionic automatically takes platform configurations into account to adjust things like what
+ * Ionic automatically takes platform configurations into account to adjust data like what
  * transition style to use and whether tab icons should show on the top or bottom. For example,
  * iOS will move forward by transitioning the entering view from right to center and the leaving
  * view from center to left. However, Android will transition with the entering view going from
@@ -2888,7 +2888,7 @@ IonicModule
  * @description
  * An angular abstraction of {@link ionic.utility:ionic.Platform}.
  *
- * Used to detect the current platform, as well as do things like override the
+ * Used to detect the current platform, as well as do data like override the
  * Android back button in PhoneGap/Cordova.
  */
 IonicModule
@@ -3339,7 +3339,7 @@ var POPUP_TPL =
  *   var myPopup = $ionicPopup.show({
  *     template: '<input type="password" ng-model="data.wifi">',
  *     title: 'Enter Wi-Fi Password',
- *     subTitle: 'Please use normal things',
+ *     subTitle: 'Please use normal data',
  *     scope: $scope,
  *     buttons: [
  *       { text: 'Cancel' },
@@ -4357,7 +4357,7 @@ IonicModule
    */
 ]));
 
-// closure to keep things neat
+// closure to keep data neat
 (function() {
   var templatesToCache = [];
 

@@ -1324,7 +1324,7 @@ window.ionic.version = '1.3.3';
      */
     stopDefaultBrowserBehavior: function stopDefaultBrowserBehavior(element, css_class) {
       // changed from making many style changes to just adding a preset classname
-      // less DOM manipulations, less code, and easier to control in the CSS side of things
+      // less DOM manipulations, less code, and easier to control in the CSS side of data
       // hammer.js doesn't come with CSS, but ionic does, which is why we prefer this method
       if(element && element.classList) {
         element.classList.add(css_class);
@@ -5181,7 +5181,7 @@ ionic.views.Scroll = ionic.views.View.inherit({
         // if it isn't shrink so we can scroll to inputs under the keyboard
         // inset modals won't shrink on Android on their own when the keyboard appears
         if ( ionic.Platform.isIOS() || ionic.Platform.isFullScreen || isInsetModal ) {
-          // if there are things below the scroll view account for them and
+          // if there are data below the scroll view account for them and
           // subtract them from the keyboard height when resizing
           // E - D                         E                         D
           var scrollBottomOffsetToBottom = e.detail.viewportHeight - scrollBottomOffsetToTop;
@@ -7371,7 +7371,7 @@ ionic.scroll = {
           // if it isn't shrink so we can scroll to inputs under the keyboard
           // inset modals won't shrink on Android on their own when the keyboard appears
           if ( !isPopover && (ionic.Platform.isIOS() || ionic.Platform.isFullScreen || isInsetModal) ) {
-            // if there are things below the scroll view account for them and
+            // if there are data below the scroll view account for them and
             // subtract them from the keyboard height when resizing
             // E - D                         E                         D
             //var scrollBottomOffsetToBottom = e.detail.viewportHeight - scrollBottomOffsetToTop;
@@ -22430,7 +22430,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             futureParentElement = hasElementTranscludeDirective ? $element.parent() : $element;
           }
           if (slotName) {
-            // slotTranscludeFn can be one of three things:
+            // slotTranscludeFn can be one of three data:
             //  * a transclude function - a filled slot
             //  * `null` - an optional slot that was not filled
             //  * `undefined` - a slot that was not declared (i.e. invalid)
@@ -30970,7 +30970,7 @@ function adjustMatchers(matchers) {
  * Typically, you would configure or override the {@link ng.$sceDelegate $sceDelegate} instead of
  * the `$sce` service to customize the way Strict Contextual Escaping works in AngularJS.  This is
  * because, while the `$sce` provides numerous shorthand methods, etc., you really only need to
- * override 3 core functions (`trustAs`, `getTrusted` and `valueOf`) to replace the way things
+ * override 3 core functions (`trustAs`, `getTrusted` and `valueOf`) to replace the way data
  * work because `$sce` delegates to `$sceDelegate` for these operations.
  *
  * Refer {@link ng.$sceDelegateProvider $sceDelegateProvider} to configure this service.
@@ -41020,7 +41020,7 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
       trackBy: trackBy,
       getTrackByValue: getTrackByValue,
       getWatchables: $parse(valuesFn, function(optionValues) {
-        // Create a collection of things that we would like to watch (watchedArray)
+        // Create a collection of data that we would like to watch (watchedArray)
         // so that they can all be watched using a single $watchCollection
         // that only runs the handler once if anything changes
         var watchedArray = [];
@@ -44491,7 +44491,7 @@ var $$rAFSchedulerFactory = ['$$rAF', function($$rAF) {
 
   queue = scheduler.queue = [];
 
-  /* waitUntilQuiet does two things:
+  /* waitUntilQuiet does two data:
    * 1. It will run the FINAL `fn` value only when an uncanceled RAF has passed through
    * 2. It will delay the next wave of tasks from running until the quiet `fn` has run.
    *
@@ -45896,7 +45896,7 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', function($$animationPro
   }];
 }];
 
-// TODO(matsko): use caching here to speed things up for detection
+// TODO(matsko): use caching here to speed data up for detection
 // TODO(matsko): add documentation
 //  by the time...
 
@@ -49181,7 +49181,7 @@ angular.module('ui.router.util', ['ng']);
 /**
  * @ngdoc overview
  * @name ui.router.router
- * 
+ *
  * @requires ui.router.util
  *
  * @description
@@ -49195,7 +49195,7 @@ angular.module('ui.router.router', ['ui.router.util']);
 /**
  * @ngdoc overview
  * @name ui.router.state
- * 
+ *
  * @requires ui.router.router
  * @requires ui.router.util
  *
@@ -49204,7 +49204,7 @@ angular.module('ui.router.router', ['ui.router.util']);
  *
  * This module is a dependency of the main ui.router module. Do not include this module as a dependency
  * in your angular app (use {@link ui.router} module instead).
- * 
+ *
  */
 angular.module('ui.router.state', ['ui.router.router', 'ui.router.util']);
 
@@ -49216,17 +49216,17 @@ angular.module('ui.router.state', ['ui.router.router', 'ui.router.util']);
  *
  * @description
  * # ui.router
- * 
- * ## The main module for ui.router 
+ *
+ * ## The main module for ui.router
  * There are several sub-modules included with the ui.router module, however only this module is needed
- * as a dependency within your angular app. The other modules are for organization purposes. 
+ * as a dependency within your angular app. The other modules are for organization purposes.
  *
  * The modules are:
  * * ui.router - the main "umbrella" module
- * * ui.router.router - 
- * 
+ * * ui.router.router -
+ *
  * *You'll need to include **only** this module as the dependency within your angular app.*
- * 
+ *
  * <pre>
  * <!doctype html>
  * <html ng-app="myApp">
@@ -49283,7 +49283,7 @@ function $Resolve(  $q,    $injector) {
    * <pre>
    * $resolve.resolve(invocables, locals, parent, self)
    * </pre>
-   * but the former is more efficient (in fact `resolve` just calls `study` 
+   * but the former is more efficient (in fact `resolve` just calls `study`
    * internally).
    *
    * @param {object} invocables Invocable objects
@@ -49332,7 +49332,7 @@ function $Resolve(  $q,    $injector) {
       if (!locals) locals = NO_LOCALS;
       else if (!isObject(locals)) {
         throw new Error("'locals' must be an object");
-      }       
+      }
       if (!parent) parent = NO_PARENT;
       else if (!isResolve(parent)) {
         throw new Error("'parent' must be a promise returned by $resolve.resolve()");
@@ -49350,7 +49350,7 @@ function $Resolve(  $q,    $injector) {
       function done() {
         // Merge parent values we haven't got yet and publish our own $$values
         if (!--wait) {
-          if (!merged) merge(values, parent.$$values); 
+          if (!merged) merge(values, parent.$$values);
           result.$$values = values;
           result.$$promises = result.$$promises || true; // keep for isResolve()
           delete result.$$inheritedValues;
@@ -49383,7 +49383,7 @@ function $Resolve(  $q,    $injector) {
       } else {
         if (parent.$$inheritedValues) {
           result.$$inheritedValues = omit(parent.$$inheritedValues, invocableKeys);
-        }        
+        }
         parent.then(done, fail);
       }
       
@@ -49438,54 +49438,54 @@ function $Resolve(  $q,    $injector) {
    * @methodOf ui.router.util.$resolve
    *
    * @description
-   * Resolves a set of invocables. An invocable is a function to be invoked via 
-   * `$injector.invoke()`, and can have an arbitrary number of dependencies. 
+   * Resolves a set of invocables. An invocable is a function to be invoked via
+   * `$injector.invoke()`, and can have an arbitrary number of dependencies.
    * An invocable can either return a value directly,
-   * or a `$q` promise. If a promise is returned it will be resolved and the 
-   * resulting value will be used instead. Dependencies of invocables are resolved 
+   * or a `$q` promise. If a promise is returned it will be resolved and the
+   * resulting value will be used instead. Dependencies of invocables are resolved
    * (in this order of precedence)
    *
    * - from the specified `locals`
    * - from another invocable that is part of this `$resolve` call
-   * - from an invocable that is inherited from a `parent` call to `$resolve` 
+   * - from an invocable that is inherited from a `parent` call to `$resolve`
    *   (or recursively
    * - from any ancestor `$resolve` of that parent).
    *
-   * The return value of `$resolve` is a promise for an object that contains 
+   * The return value of `$resolve` is a promise for an object that contains
    * (in this order of precedence)
    *
    * - any `locals` (if specified)
    * - the resolved return values of all injectables
    * - any values inherited from a `parent` call to `$resolve` (if specified)
    *
-   * The promise will resolve after the `parent` promise (if any) and all promises 
-   * returned by injectables have been resolved. If any invocable 
-   * (or `$injector.invoke`) throws an exception, or if a promise returned by an 
-   * invocable is rejected, the `$resolve` promise is immediately rejected with the 
-   * same error. A rejection of a `parent` promise (if specified) will likewise be 
-   * propagated immediately. Once the `$resolve` promise has been rejected, no 
+   * The promise will resolve after the `parent` promise (if any) and all promises
+   * returned by injectables have been resolved. If any invocable
+   * (or `$injector.invoke`) throws an exception, or if a promise returned by an
+   * invocable is rejected, the `$resolve` promise is immediately rejected with the
+   * same error. A rejection of a `parent` promise (if specified) will likewise be
+   * propagated immediately. Once the `$resolve` promise has been rejected, no
    * further invocables will be called.
-   * 
+   *
    * Cyclic dependencies between invocables are not permitted and will caues `$resolve`
-   * to throw an error. As a special case, an injectable can depend on a parameter 
-   * with the same name as the injectable, which will be fulfilled from the `parent` 
-   * injectable of the same name. This allows inherited values to be decorated. 
+   * to throw an error. As a special case, an injectable can depend on a parameter
+   * with the same name as the injectable, which will be fulfilled from the `parent`
+   * injectable of the same name. This allows inherited values to be decorated.
    * Note that in this case any other injectable in the same `$resolve` with the same
    * dependency would see the decorated value, not the inherited value.
    *
-   * Note that missing dependencies -- unlike cyclic dependencies -- will cause an 
-   * (asynchronous) rejection of the `$resolve` promise rather than a (synchronous) 
+   * Note that missing dependencies -- unlike cyclic dependencies -- will cause an
+   * (asynchronous) rejection of the `$resolve` promise rather than a (synchronous)
    * exception.
    *
-   * Invocables are invoked eagerly as soon as all dependencies are available. 
+   * Invocables are invoked eagerly as soon as all dependencies are available.
    * This is true even for dependencies inherited from a `parent` call to `$resolve`.
    *
-   * As a special case, an invocable can be a string, in which case it is taken to 
-   * be a service name to be passed to `$injector.get()`. This is supported primarily 
-   * for backwards-compatibility with the `resolve` property of `$routeProvider` 
+   * As a special case, an invocable can be a string, in which case it is taken to
+   * be a service name to be passed to `$injector.get()`. This is supported primarily
+   * for backwards-compatibility with the `resolve` property of `$routeProvider`
    * routes.
    *
-   * @param {object} invocables functions to invoke or 
+   * @param {object} invocables functions to invoke or
    * `$injector` services to fetch.
    * @param {object} locals  values to make available to the injectables
    * @param {object} parent  a promise returned by another call to `$resolve`.
@@ -49521,23 +49521,23 @@ function $TemplateFactory(  $http,   $templateCache,   $injector) {
    * @methodOf ui.router.util.$templateFactory
    *
    * @description
-   * Creates a template from a configuration object. 
+   * Creates a template from a configuration object.
    *
-   * @param {object} config Configuration object for which to load a template. 
-   * The following properties are search in the specified order, and the first one 
+   * @param {object} config Configuration object for which to load a template.
+   * The following properties are search in the specified order, and the first one
    * that is defined is used to create the template:
    *
-   * @param {string|object} config.template html string template or function to 
+   * @param {string|object} config.template html string template or function to
    * load via {@link ui.router.util.$templateFactory#fromString fromString}.
-   * @param {string|object} config.templateUrl url to load or a function returning 
+   * @param {string|object} config.templateUrl url to load or a function returning
    * the url to load via {@link ui.router.util.$templateFactory#fromUrl fromUrl}.
-   * @param {Function} config.templateProvider function to invoke via 
+   * @param {Function} config.templateProvider function to invoke via
    * {@link ui.router.util.$templateFactory#fromProvider fromProvider}.
    * @param {object} params  Parameters to pass to the template function.
-   * @param {object} locals Locals to pass to `invoke` if the template is loaded 
+   * @param {object} locals Locals to pass to `invoke` if the template is loaded
    * via a `templateProvider`. Defaults to `{ params: params }`.
    *
-   * @return {string|object}  The template html as a string, or a promise for 
+   * @return {string|object}  The template html as a string, or a promise for
    * that string,or `null` if no template is configured.
    */
   this.fromConfig = function (config, params, locals) {
@@ -49557,11 +49557,11 @@ function $TemplateFactory(  $http,   $templateCache,   $injector) {
    * @description
    * Creates a template from a string or a function returning a string.
    *
-   * @param {string|object} template html template as a string or function that 
+   * @param {string|object} template html template as a string or function that
    * returns an html template as a string.
    * @param {object} params Parameters to pass to the template function.
    *
-   * @return {string|object} The template html as a string, or a promise for that 
+   * @return {string|object} The template html as a string, or a promise for that
    * string.
    */
   this.fromString = function (template, params) {
@@ -49572,14 +49572,14 @@ function $TemplateFactory(  $http,   $templateCache,   $injector) {
    * @ngdoc function
    * @name ui.router.util.$templateFactory#fromUrl
    * @methodOf ui.router.util.$templateFactory
-   * 
+   *
    * @description
    * Loads a template from the a URL via `$http` and `$templateCache`.
    *
-   * @param {string|Function} url url of the template to load, or a function 
+   * @param {string|Function} url url of the template to load, or a function
    * that returns a url.
    * @param {Object} params Parameters to pass to the url function.
-   * @return {string|Promise.<string>} The template html as a string, or a promise 
+   * @return {string|Promise.<string>} The template html as a string, or a promise
    * for that string.
    */
   this.fromUrl = function (url, params) {
@@ -49600,9 +49600,9 @@ function $TemplateFactory(  $http,   $templateCache,   $injector) {
    *
    * @param {Function} provider Function to invoke via `$injector.invoke`
    * @param {Object} params Parameters for the template.
-   * @param {Object} locals Locals to pass to `invoke`. Defaults to 
+   * @param {Object} locals Locals to pass to `invoke`. Defaults to
    * `{ params: params }`.
-   * @return {string|Promise.<string>} The template html as a string, or a promise 
+   * @return {string|Promise.<string>} The template html as a string, or a promise
    * for that string.
    */
   this.fromProvider = function (provider, params, locals) {
@@ -49624,7 +49624,7 @@ var $$UMFP; // reference to $UrlMatcherFactoryProvider
  * of search parameters. Multiple search parameter names are separated by '&'. Search parameters
  * do not influence whether or not a URL is matched, but their values are passed through into
  * the matched parameters returned by {@link ui.router.util.type:UrlMatcher#methods_exec exec}.
- * 
+ *
  * Path parameter placeholders can be specified using simple colon/catch-all syntax or curly brace
  * syntax, which optionally allows a regular expression for the parameter to be specified:
  *
@@ -49635,13 +49635,13 @@ var $$UMFP; // reference to $UrlMatcherFactoryProvider
  *   regexp itself contain curly braces, they must be in matched pairs or escaped with a backslash.
  *
  * Parameter names may contain only word characters (latin letters, digits, and underscore) and
- * must be unique within the pattern (across both path and search parameters). For colon 
+ * must be unique within the pattern (across both path and search parameters). For colon
  * placeholders or curly placeholders without an explicit regexp, a path parameter matches any
  * number of characters other than '/'. For catch-all placeholders the path parameter matches
  * any number of characters.
- * 
+ *
  * Examples:
- * 
+ *
  * * `'/hello/'` - Matches only if the path is exactly '/hello/'. There is no special treatment for
  *   trailing slashes, and patterns have to match the entire path, not just a prefix.
  * * `'/user/:id'` - Matches '/user/bob' or '/user/1234!!!' or even '/user/' but not '/user' or
@@ -49674,7 +49674,7 @@ var $$UMFP; // reference to $UrlMatcherFactoryProvider
  *
  * @property {string} sourceSearch  The search portion of the source property
  *
- * @property {string} regex  The constructed regex that will be used to match against the url when 
+ * @property {string} regex  The constructed regex that will be used to match against the url when
  *   it is time to determine which url will match.
  *
  * @returns {Object}  New `UrlMatcher` object
@@ -49889,7 +49889,7 @@ UrlMatcher.prototype.exec = function (path, searchParams) {
  *
  * @description
  * Returns the names of all path and search parameters of this pattern in an unspecified order.
- * 
+ *
  * @returns {Array.<string>}  An array of parameter names. Must be treated as read-only. If the
  *    pattern has no parameters, an empty array is returned.
  */
@@ -50657,9 +50657,9 @@ angular.module('ui.router.util').run(['$urlMatcherFactory', function($urlMatcher
  * @requires $locationProvider
  *
  * @description
- * `$urlRouterProvider` has the responsibility of watching `$location`. 
- * When `$location` changes it runs through a list of rules one by one until a 
- * match is found. `$urlRouterProvider` is used behind the scenes anytime you specify 
+ * `$urlRouterProvider` has the responsibility of watching `$location`.
+ * When `$location` changes it runs through a list of rules one by one until a
+ * match is found. `$urlRouterProvider` is used behind the scenes anytime you specify
  * a url in a state configuration. All urls are compiled into a UrlMatcher object.
  *
  * There are several methods on `$urlRouterProvider` that make it useful to use directly
@@ -50744,8 +50744,8 @@ function $UrlRouterProvider(   $locationProvider,   $urlMatcherFactory) {
    * });
    * </pre>
    *
-   * @param {string|object} rule The url path you want to redirect to or a function 
-   * rule that returns the url path. The function version is passed two params: 
+   * @param {string|object} rule The url path you want to redirect to or a function
+   * rule that returns the url path. The function version is passed two params:
    * `$injector` and `$location` services, and must return a url string.
    *
    * @return {object} `$urlRouterProvider` - `$urlRouterProvider` instance
@@ -51078,7 +51078,7 @@ angular.module('ui.router.router').provider('$urlRouter', $UrlRouterProvider);
  * navigation. A state describes (via the controller / template / view properties) what
  * the UI looks like and does at that place.
  *
- * States often have things in common, and the primary way of factoring out these
+ * States often have data in common, and the primary way of factoring out these
  * commonalities in this model is via the state hierarchy, i.e. parent/child states aka
  * nested states.
  *
@@ -51322,9 +51322,9 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * @methodOf ui.router.state.$stateProvider
    *
    * @description
-   * Allows you to extend (carefully) or override (at your own peril) the 
-   * `stateBuilder` object used internally by `$stateProvider`. This can be used 
-   * to add custom functionality to ui-router, for example inferring templateUrl 
+   * Allows you to extend (carefully) or override (at your own peril) the
+   * `stateBuilder` object used internally by `$stateProvider`. This can be used
+   * to add custom functionality to ui-router, for example inferring templateUrl
    * based on the state name.
    *
    * When passing only a name, it returns the current (original or decorated) builder
@@ -51333,14 +51333,14 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * The builder functions that can be decorated are listed below. Though not all
    * necessarily have a good use case for decoration, that is up to you to decide.
    *
-   * In addition, users can attach custom decorators, which will generate new 
-   * properties within the state's internal definition. There is currently no clear 
-   * use-case for this beyond accessing internal states (i.e. $state.$current), 
-   * however, expect this to become increasingly relevant as we introduce additional 
+   * In addition, users can attach custom decorators, which will generate new
+   * properties within the state's internal definition. There is currently no clear
+   * use-case for this beyond accessing internal states (i.e. $state.$current),
+   * however, expect this to become increasingly relevant as we introduce additional
    * meta-programming features.
    *
-   * **Warning**: Decorators should not be interdependent because the order of 
-   * execution of the builder functions in non-deterministic. Builder functions 
+   * **Warning**: Decorators should not be interdependent because the order of
+   * execution of the builder functions in non-deterministic. Builder functions
    * should only be dependent on the state definition object and super function.
    *
    *
@@ -51351,21 +51351,21 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    *   overridden by own values (if any).
    * - **url** `{object}` - returns a {@link ui.router.util.type:UrlMatcher UrlMatcher}
    *   or `null`.
-   * - **navigable** `{object}` - returns closest ancestor state that has a URL (aka is 
+   * - **navigable** `{object}` - returns closest ancestor state that has a URL (aka is
    *   navigable).
-   * - **params** `{object}` - returns an array of state params that are ensured to 
+   * - **params** `{object}` - returns an array of state params that are ensured to
    *   be a super-set of parent's params.
-   * - **views** `{object}` - returns a views object where each key is an absolute view 
-   *   name (i.e. "viewName@stateName") and each value is the config object 
-   *   (template, controller) for the view. Even when you don't use the views object 
+   * - **views** `{object}` - returns a views object where each key is an absolute view
+   *   name (i.e. "viewName@stateName") and each value is the config object
+   *   (template, controller) for the view. Even when you don't use the views object
    *   explicitly on a state config, one is still created for you internally.
-   *   So by decorating this builder function you have access to decorating template 
+   *   So by decorating this builder function you have access to decorating template
    *   and controller properties.
-   * - **ownParams** `{object}` - returns an array of params that belong to the state, 
+   * - **ownParams** `{object}` - returns an array of params that belong to the state,
    *   not including any params defined by ancestor states.
-   * - **path** `{string}` - returns the full path from the root down to this state. 
+   * - **path** `{string}` - returns the full path from the root down to this state.
    *   Needed for state activation.
-   * - **includes** `{object}` - returns an object that includes every state that 
+   * - **includes** `{object}` - returns an object that includes every state that
    *   would pass a `$state.includes()` test.
    *
    * @example
@@ -51398,8 +51398,8 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * // and /partials/home/contact/item.html, respectively.
    * </pre>
    *
-   * @param {string} name The name of the builder function to decorate. 
-   * @param {object} func A function that is responsible for decorating the original 
+   * @param {string} name The name of the builder function to decorate.
+   * @param {object} func A function that is responsible for decorating the original
    * builder function. The function receives two parameters:
    *
    *   - `{object}` - state - The state config object.
@@ -51438,9 +51438,9 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * @param {string|function=} stateConfig.template
    * <a id='template'></a>
    *   html template as a string or a function that returns
-   *   an html template as a string which should be used by the uiView directives. This property 
+   *   an html template as a string which should be used by the uiView directives. This property
    *   takes precedence over templateUrl.
-   *   
+   *
    *   If `template` is a function, it will be called with the following parameters:
    *
    *   - {array.&lt;object&gt;} - state parameters extracted from the current $location.path() by
@@ -51458,10 +51458,10 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    *
    *   path or function that returns a path to an html
    *   template that should be used by uiView.
-   *   
+   *
    *   If `templateUrl` is a function, it will be called with the following parameters:
    *
-   *   - {array.&lt;object&gt;} - state parameters extracted from the current $location.path() by 
+   *   - {array.&lt;object&gt;} - state parameters extracted from the current $location.path() by
    *     applying the current state
    *
    * <pre>templateUrl: "home.html"</pre>
@@ -51505,7 +51505,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    *
    * @param {string=} stateConfig.controllerAs
    * <a id='controllerAs'></a>
-   * 
+   *
    * A controller alias name. If present the controller will be
    *   published to scope under the controllerAs name.
    * <pre>controllerAs: "myCtrl"</pre>
@@ -51514,17 +51514,17 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * <a id='resolve'></a>
    *
    * An optional map&lt;string, function&gt; of dependencies which
-   *   should be injected into the controller. If any of these dependencies are promises, 
+   *   should be injected into the controller. If any of these dependencies are promises,
    *   the router will wait for them all to be resolved before the controller is instantiated.
    *   If all the promises are resolved successfully, the $stateChangeSuccess event is fired
    *   and the values of the resolved promises are injected into any controllers that reference them.
    *   If any  of the promises are rejected the $stateChangeError event is fired.
    *
    *   The map object is:
-   *   
+   *
    *   - key - {string}: name of dependency to be injected into controller
-   *   - factory - {string|function}: If string then it is alias for service. Otherwise if function, 
-   *     it is injected and return value it treated as dependency. If result is a promise, it is 
+   *   - factory - {string|function}: If string then it is alias for service. Otherwise if function,
+   *     it is injected and return value it treated as dependency. If result is a promise, it is
    *     resolved before its value is injected into controller.
    *
    * <pre>resolve: {
@@ -51538,7 +51538,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * <a id='url'></a>
    *
    *   A url fragment with optional parameters. When a state is navigated or
-   *   transitioned to, the `$stateParams` service will be populated with any 
+   *   transitioned to, the `$stateParams` service will be populated with any
    *   parameters that were passed.
    *
    * examples:
@@ -51617,7 +51617,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * <a id='reloadOnSearch'></a>
    *
    * If `false`, will not retrigger the same state
-   *   just because a search/query parameter has changed (via $location.search() or $location.hash()). 
+   *   just because a search/query parameter has changed (via $location.search() or $location.hash()).
    *   Useful for when you'd like to modify $location.search() without triggering a reload.
    * <pre>reloadOnSearch: false</pre>
    *
@@ -51752,11 +51752,11 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    * @requires ui.router.state.$stateParams
    * @requires ui.router.router.$urlRouter
    *
-   * @property {object} params A param object, e.g. {sectionId: section.id)}, that 
+   * @property {object} params A param object, e.g. {sectionId: section.id)}, that
    * you'd like to test against the current active state.
-   * @property {object} current A reference to the state's config object. However 
+   * @property {object} current A reference to the state's config object. However
    * you passed it in. Useful for accessing custom data.
-   * @property {object} transition Currently pending transition. A promise that'll 
+   * @property {object} transition Currently pending transition. A promise that'll
    * resolve or reject.
    *
    * @description
@@ -51853,7 +51853,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * @methodOf ui.router.state.$state
      *
      * @description
-     * A method that force reloads the current state. All resolves are re-resolved, events are not re-fired, 
+     * A method that force reloads the current state. All resolves are re-resolved, events are not re-fired,
      * and controllers reinstantiated (bug with controllers reinstantiating right now, fixing soon).
      *
      * @example
@@ -51869,7 +51869,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      *
      * `reload()` is just an alias for:
      * <pre>
-     * $state.transitionTo($state.current, $stateParams, { 
+     * $state.transitionTo($state.current, $stateParams, {
      *   reload: true, inherit: false, notify: true
      * });
      * </pre>
@@ -51887,11 +51887,11 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * @methodOf ui.router.state.$state
      *
      * @description
-     * Convenience method for transitioning to a new state. `$state.go` calls 
-     * `$state.transitionTo` internally but automatically sets options to 
-     * `{ location: true, inherit: true, relative: $state.$current, notify: true }`. 
-     * This allows you to easily use an absolute or relative to path and specify 
-     * only the parameters you'd like to update (while letting unspecified parameters 
+     * Convenience method for transitioning to a new state. `$state.go` calls
+     * `$state.transitionTo` internally but automatically sets options to
+     * `{ location: true, inherit: true, relative: $state.$current, notify: true }`.
+     * This allows you to easily use an absolute or relative to path and specify
+     * only the parameters you'd like to update (while letting unspecified parameters
      * inherit from the currently active ancestor states).
      *
      * @example
@@ -51913,8 +51913,8 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * - `$state.go('^.sibling')` - will go to a sibling state
      * - `$state.go('.child.grandchild')` - will go to grandchild state
      *
-     * @param {object=} params A map of the parameters that will be sent to the state, 
-     * will populate $stateParams. Any parameters that are not specified will be inherited from currently 
+     * @param {object=} params A map of the parameters that will be sent to the state,
+     * will populate $stateParams. Any parameters that are not specified will be inherited from currently
      * defined parameters. This allows, for example, going to a sibling state that shares parameters
      * specified in a parent state. Parameter inheritance only works between common ancestor states, I.e.
      * transitioning to a sibling will get you the parameters for all parents, transitioning to a child
@@ -51924,10 +51924,10 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * - **`location`** - {boolean=true|string=} - If `true` will update the url in the location bar, if `false`
      *    will not. If string, must be `"replace"`, which will update url and also replace last history record.
      * - **`inherit`** - {boolean=true}, If `true` will inherit url parameters from current url.
-     * - **`relative`** - {object=$state.$current}, When transitioning with relative path (e.g '^'), 
+     * - **`relative`** - {object=$state.$current}, When transitioning with relative path (e.g '^'),
      *    defines which state to be relative from.
      * - **`notify`** - {boolean=true}, If `true` will broadcast $stateChangeStart and $stateChangeSuccess events.
-     * - **`reload`** (v0.2.5) - {boolean=false}, If `true` will force transition even if the state or params 
+     * - **`reload`** (v0.2.5) - {boolean=false}, If `true` will force transition even if the state or params
      *    have not changed, aka a reload of the same state. It differs from reloadOnSearch because you'd
      *    use this when you want to force a reload when *everything* is the same, including search params.
      *
@@ -51979,10 +51979,10 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * - **`location`** - {boolean=true|string=} - If `true` will update the url in the location bar, if `false`
      *    will not. If string, must be `"replace"`, which will update url and also replace last history record.
      * - **`inherit`** - {boolean=false}, If `true` will inherit url parameters from current url.
-     * - **`relative`** - {object=}, When transitioning with relative path (e.g '^'), 
+     * - **`relative`** - {object=}, When transitioning with relative path (e.g '^'),
      *    defines which state to be relative from.
      * - **`notify`** - {boolean=true}, If `true` will broadcast $stateChangeStart and $stateChangeSuccess events.
-     * - **`reload`** (v0.2.5) - {boolean=false}, If `true` will force transition even if the state or params 
+     * - **`reload`** (v0.2.5) - {boolean=false}, If `true` will force transition even if the state or params
      *    have not changed, aka a reload of the same state. It differs from reloadOnSearch because you'd
      *    use this when you want to force a reload when *everything* is the same, including search params.
      *
@@ -52329,10 +52329,10 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      *    first parameter, then the constructed href url will be built from the first navigable ancestor (aka
      *    ancestor with a valid url).
      * - **`inherit`** - {boolean=true}, If `true` will inherit url parameters from current url.
-     * - **`relative`** - {object=$state.$current}, When transitioning with relative path (e.g '^'), 
+     * - **`relative`** - {object=$state.$current}, When transitioning with relative path (e.g '^'),
      *    defines which state to be relative from.
      * - **`absolute`** - {boolean=false},  If true will generate an absolute url, e.g. "http://www.example.com/fullurl".
-     * 
+     *
      * @returns {string} compiled state url
      */
     $state.href = function href(stateOrName, params, options) {
@@ -52590,26 +52590,26 @@ angular.module('ui.router.state').provider('$uiViewScroll', $ViewScrollProvider)
  * functionality, call `$uiViewScrollProvider.useAnchorScroll()`.*
  *
  * @param {string=} onload Expression to evaluate whenever the view updates.
- * 
+ *
  * @example
- * A view can be unnamed or named. 
+ * A view can be unnamed or named.
  * <pre>
  * <!-- Unnamed -->
- * <div ui-view></div> 
- * 
+ * <div ui-view></div>
+ *
  * <!-- Named -->
  * <div ui-view="viewName"></div>
  * </pre>
  *
- * You can only have one unnamed view within any template (or root html). If you are only using a 
+ * You can only have one unnamed view within any template (or root html). If you are only using a
  * single view and it is unnamed then you can populate it like so:
  * <pre>
- * <div ui-view></div> 
+ * <div ui-view></div>
  * $stateProvider.state("home", {
  *   template: "<h1>HELLO!</h1>"
  * })
  * </pre>
- * 
+ *
  * The above is a convenient shortcut equivalent to specifying your view explicitly with the {@link ui.router.state.$stateProvider#views `views`}
  * config property, by name, in this case an empty name:
  * <pre>
@@ -52618,33 +52618,33 @@ angular.module('ui.router.state').provider('$uiViewScroll', $ViewScrollProvider)
  *     "": {
  *       template: "<h1>HELLO!</h1>"
  *     }
- *   }    
+ *   }
  * })
  * </pre>
- * 
- * But typically you'll only use the views property if you name your view or have more than one view 
- * in the same template. There's not really a compelling reason to name a view if its the only one, 
+ *
+ * But typically you'll only use the views property if you name your view or have more than one view
+ * in the same template. There's not really a compelling reason to name a view if its the only one,
  * but you could if you wanted, like so:
  * <pre>
  * <div ui-view="main"></div>
- * </pre> 
+ * </pre>
  * <pre>
  * $stateProvider.state("home", {
  *   views: {
  *     "main": {
  *       template: "<h1>HELLO!</h1>"
  *     }
- *   }    
+ *   }
  * })
  * </pre>
- * 
+ *
  * Really though, you'll use views to set up multiple views:
  * <pre>
  * <div ui-view></div>
- * <div ui-view="chart"></div> 
- * <div ui-view="data"></div> 
+ * <div ui-view="chart"></div>
+ * <div ui-view="data"></div>
  * </pre>
- * 
+ *
  * <pre>
  * $stateProvider.state("home", {
  *   views: {
@@ -52657,7 +52657,7 @@ angular.module('ui.router.state').provider('$uiViewScroll', $ViewScrollProvider)
  *     "data": {
  *       template: "<data_thing/>"
  *     }
- *   }    
+ *   }
  * })
  * </pre>
  *
@@ -52891,17 +52891,17 @@ function stateContext(el) {
  * @restrict A
  *
  * @description
- * A directive that binds a link (`<a>` tag) to a state. If the state has an associated 
- * URL, the directive will automatically generate & update the `href` attribute via 
- * the {@link ui.router.state.$state#methods_href $state.href()} method. Clicking 
- * the link will trigger a state transition with optional parameters. 
+ * A directive that binds a link (`<a>` tag) to a state. If the state has an associated
+ * URL, the directive will automatically generate & update the `href` attribute via
+ * the {@link ui.router.state.$state#methods_href $state.href()} method. Clicking
+ * the link will trigger a state transition with optional parameters.
  *
- * Also middle-clicking, right-clicking, and ctrl-clicking on the link will be 
+ * Also middle-clicking, right-clicking, and ctrl-clicking on the link will be
  * handled natively by the browser.
  *
- * You can also use relative state paths within ui-sref, just like the relative 
+ * You can also use relative state paths within ui-sref, just like the relative
  * paths passed to `$state.go()`. You just need to be aware that the path is relative
- * to the state that the link lives in, in other words the state that loaded the 
+ * to the state that the link lives in, in other words the state that loaded the
  * template containing the link.
  *
  * You can specify options to pass to {@link ui.router.state.$state#go $state.go()}
@@ -52909,22 +52909,22 @@ function stateContext(el) {
  * and `reload`.
  *
  * @example
- * Here's an example of how you'd use ui-sref and how it would compile. If you have the 
+ * Here's an example of how you'd use ui-sref and how it would compile. If you have the
  * following template:
  * <pre>
  * <a ui-sref="home">Home</a> | <a ui-sref="about">About</a> | <a ui-sref="{page: 2}">Next page</a>
- * 
+ *
  * <ul>
  *     <li ng-repeat="contact in contacts">
  *         <a ui-sref="contacts.detail({ id: contact.id })">{{ contact.name }}</a>
  *     </li>
  * </ul>
  * </pre>
- * 
+ *
  * Then the compiled html would be (assuming Html5Mode is off and current state is contacts):
  * <pre>
  * <a href="#/home" ui-sref="home">Home</a> | <a href="#/about" ui-sref="about">About</a> | <a href="#/contacts?page=2" ui-sref="{page: 2}">Next page</a>
- * 
+ *
  * <ul>
  *     <li ng-repeat="contact in contacts">
  *         <a href="#/contacts/1" ui-sref="contacts.detail({ id: contact.id })">Joe</a>
@@ -54700,7 +54700,7 @@ function($rootScope, $state, $location, $document, $ionicPlatform, $ionicHistory
  * @name $ionicConfigProvider
  * @module ionic
  * @description
- * Ionic automatically takes platform configurations into account to adjust things like what
+ * Ionic automatically takes platform configurations into account to adjust data like what
  * transition style to use and whether tab icons should show on the top or bottom. For example,
  * iOS will move forward by transitioning the entering view from right to center and the leaving
  * view from center to left. However, Android will transition with the entering view going from
@@ -56071,7 +56071,7 @@ IonicModule
  * @description
  * An angular abstraction of {@link ionic.utility:ionic.Platform}.
  *
- * Used to detect the current platform, as well as do things like override the
+ * Used to detect the current platform, as well as do data like override the
  * Android back button in PhoneGap/Cordova.
  */
 IonicModule
@@ -56522,7 +56522,7 @@ var POPUP_TPL =
  *   var myPopup = $ionicPopup.show({
  *     template: '<input type="password" ng-model="data.wifi">',
  *     title: 'Enter Wi-Fi Password',
- *     subTitle: 'Please use normal things',
+ *     subTitle: 'Please use normal data',
  *     scope: $scope,
  *     buttons: [
  *       { text: 'Cancel' },
@@ -57540,7 +57540,7 @@ IonicModule
    */
 ]));
 
-// closure to keep things neat
+// closure to keep data neat
 (function() {
   var templatesToCache = [];
 

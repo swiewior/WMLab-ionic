@@ -1317,7 +1317,7 @@ window.ionic.version = '1.3.3';
      */
     stopDefaultBrowserBehavior: function stopDefaultBrowserBehavior(element, css_class) {
       // changed from making many style changes to just adding a preset classname
-      // less DOM manipulations, less code, and easier to control in the CSS side of things
+      // less DOM manipulations, less code, and easier to control in the CSS side of data
       // hammer.js doesn't come with CSS, but ionic does, which is why we prefer this method
       if(element && element.classList) {
         element.classList.add(css_class);
@@ -5174,7 +5174,7 @@ ionic.views.Scroll = ionic.views.View.inherit({
         // if it isn't shrink so we can scroll to inputs under the keyboard
         // inset modals won't shrink on Android on their own when the keyboard appears
         if ( ionic.Platform.isIOS() || ionic.Platform.isFullScreen || isInsetModal ) {
-          // if there are things below the scroll view account for them and
+          // if there are data below the scroll view account for them and
           // subtract them from the keyboard height when resizing
           // E - D                         E                         D
           var scrollBottomOffsetToBottom = e.detail.viewportHeight - scrollBottomOffsetToTop;
@@ -7364,7 +7364,7 @@ ionic.scroll = {
           // if it isn't shrink so we can scroll to inputs under the keyboard
           // inset modals won't shrink on Android on their own when the keyboard appears
           if ( !isPopover && (ionic.Platform.isIOS() || ionic.Platform.isFullScreen || isInsetModal) ) {
-            // if there are things below the scroll view account for them and
+            // if there are data below the scroll view account for them and
             // subtract them from the keyboard height when resizing
             // E - D                         E                         D
             //var scrollBottomOffsetToBottom = e.detail.viewportHeight - scrollBottomOffsetToTop;
