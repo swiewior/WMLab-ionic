@@ -7,10 +7,10 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-    
+  
   
 
-      .state('menu', {
+  .state('menu', {
     url: '/menu',
     templateUrl: 'templates/menu.html',
     controller: 'menuCtrl'
@@ -94,6 +94,6 @@ angular.module('app.routes', [])
 
 $urlRouterProvider.otherwise('/list')
 
-  
+
 
 });
