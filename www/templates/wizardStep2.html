@@ -4,21 +4,41 @@
     <form id="wizardStep2-form4" class="list">
       <label class="item item-input" id="wizardStep2-input9">
         <span class="input-label">P</span>
-        <input type="number" placeholder="">
+        <input type="number" placeholder="Force" ng-model="data.p">
       </label>
       <label class="item item-input" id="wizardStep2-input10">
-        <span class="input-label">L1</span>
-        <input type="number" placeholder="">
+        <span class="input-label">L<sub>1</sub></span>
+        <input type="number" placeholder="Extensometer 1" ng-model="data.l1">
       </label>
       <label class="item item-input" id="wizardStep2-input11">
-        <span class="input-label">L2</span>
-        <input type="number" placeholder="">
+        <span class="input-label">L<sub>2</sub></span>
+        <input type="number" placeholder="Extensometer 2" ng-model="data.l2">
       </label>
-      <button id="wizardStep2-button16" class="button button-balanced  button-block icon-left ion-android-add-circle">Add</button>
+      <button id="wizardStep2-button16" class="button button-balanced  button-block icon-left ion-android-add-circle" ng-click="add(data)">Add</button>
     </form>
     <a ui-sref="menu.wizardStep3" id="wizardStep2-button18" class="button button-positive  button-block icon-right ion-android-arrow-forward">Next</a>
     <a ui-sref="tensileTest" id="wizardStep2-button14" class="button button-assertive  button-block icon-left ion-android-cancel">Cancel</a>
     <div id="wizardStep2-container3" class="creator-container"></div>
     <div id="wizardStep2-button-bar2" class="button-bar"></div>
+
+    <div id="tensileTest-markdown2" class="show-list-numbers-and-dots">
+
+      <div class="row header">
+        <div class="col">#</div>
+        <div class="col">P</div>
+        <div class="col">L1</div>
+        <div class="col">L2</div>
+        <div class="col"></div>
+      </div>
+      <div class="row" ng-repeat="row in $storage.tests[$storage.current].input">
+        <div class="col">{{$index + 1}}</div>
+        <div class="col">{{row.p}}</div>
+        <div class="col">{{row.l1}}</div>
+        <div class="col">{{row.l2}}</div>
+        <div class="col">
+          <button class="button button-assertive" ng-click="remove(row)">Remove</button>
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

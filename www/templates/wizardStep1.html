@@ -3,12 +3,12 @@
     <h id="wizardStep1-heading2" style="color:#000000;font-weight:400;">Input sample dimensions</h>
     <form id="wizardStep1-form3" class="list">
       <label class="item item-input" id="wizardStep1-input7">
-        <span class="input-label">L0</span>
-        <input type="number" placeholder="">
+        <span class="input-label">L<sub>0</sub></span>
+        <input type="number" placeholder="Initial lenght" ng-model="$storage.tests[$storage.current].l0">
       </label>
       <label class="item item-input" id="wizardStep1-input8">
-        <span class="input-label">D0</span>
-        <input type="number" placeholder="">
+        <span class="input-label">D<sub>0</sub></span>
+        <input type="number" placeholder="Initial Diameter" ng-model="$storage.tests[$storage.current].d0">
       </label>
     </form>
     <div id="wizardStep1-button-bar1" class="button-bar"></div>

@@ -1,5 +1,62 @@
 <ion-view title="Results" id="page15">
   <ion-content padding="true" class="has-header">
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">S<sub>0</sub></span>
+        <input type="number" placeholder="Initial lenght" ng-model="$storage.tests[$storage.current].s0">
+        mm
+      </label>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">S<sub>u</sub></span>
+        <input type="number" placeholder="Initial Diameter" ng-model="$storage.tests[$storage.current].su">
+        mm
+      </label>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">A<sub>10</sub></span>
+        <input type="number" placeholder="Final Diameter" ng-model="$storage.tests[$storage.current].a10">
+        mm
+      </label>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">z</span>
+        <input type="number" placeholder="Final lenght" ng-model="$storage.tests[$storage.current].z">
+        mm
+      </label>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">R<sub>H</sub></span>
+        <input type="number" placeholder="Maximum force" ng-model="$storage.tests[$storage.current].rh">
+        N
+      </label>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">R<sub>eH</sub></span>
+        <input type="number" placeholder="Lower yield point" ng-model="$storage.tests[$storage.current].reh">
+        N
+      </label>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">R<sub>m</sub></span>
+        <input type="number" placeholder="Higher yield point" ng-model="$storage.tests[$storage.current].rm">
+        N
+      </label>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">R<sub>u</sub></span>
+        <input type="number" placeholder="Breaking force" ng-model="$storage.tests[$storage.current].ru">
+        N
+      </label>
+    </div>
+
     <ion-list id="results-list8">
       <ion-item id="results-list-item20">ID
         <ion-option-button class="button-stable">Test ID</ion-option-button>

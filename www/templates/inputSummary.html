@@ -1,40 +1,81 @@
 <ion-view title="Input - summary" id="page11">
   <ion-content padding="true" class="has-header">
-    <ion-list id="inputSummary-list5">
-      <ion-item id="inputSummary-list-item7">L0
-        <span class="item-note">mm</span>
-        <ion-option-button class="button-stable">Initial lenght</ion-option-button>
-      </ion-item>
-      <ion-item id="inputSummary-list-item15">D0
-        <span class="item-note">mm</span>
-        <ion-option-button class="button-stable">Initial Diameter</ion-option-button>
-      </ion-item>
-      <ion-item id="inputSummary-list-item9">Du
-        <span class="item-note">mm</span>
-        <ion-option-button class="button-stable">Final Diameter</ion-option-button>
-      </ion-item>
-      <ion-item id="inputSummary-list-item10">Lu
-        <span class="item-note">mm</span>
-        <ion-option-button class="button-positive">Final lenght</ion-option-button>
-      </ion-item>
-      <ion-item id="inputSummary-list-item11">Pm
-        <span class="item-note">N</span>
-        <ion-option-button class="button-stable">Maximum force</ion-option-button>
-      </ion-item>
-      <ion-item id="inputSummary-list-item12">PeL
-        <span class="item-note">N</span>
-        <ion-option-button class="button-positive">Low yield point</ion-option-button>
-      </ion-item>
-      <ion-item id="inputSummary-list-item13">PeH
-        <span class="item-note">N</span>
-        <ion-option-button class="button-positive">Higher yield point</ion-option-button>
-      </ion-item>
-      <ion-item id="inputSummary-list-item14">Pu
-        <span class="item-note">N</span>
-        <ion-option-button class="button-stable">Breaking force</ion-option-button>
-      </ion-item>
-    </ion-list>
-    <div id="inputSummary-container5" class="creator-container"></div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">L<sub>0</sub></span>
+        <input type="number" placeholder="Initial lenght" ng-model="$storage.tests[$storage.current].l0">
+        mm
+      </label>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">D<sub>0</sub></span>
+        <input type="number" placeholder="Initial Diameter" ng-model="$storage.tests[$storage.current].d0">
+        mm
+      </label>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">D<sub>u</sub></span>
+        <input type="number" placeholder="Final Diameter" ng-model="$storage.tests[$storage.current].du">
+        mm
+      </label>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">L<sub>u</sub></span>
+        <input type="number" placeholder="Final lenght" ng-model="$storage.tests[$storage.current].lu">
+        mm
+      </label>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">P<sub>m</sub></span>
+        <input type="number" placeholder="Maximum force" ng-model="$storage.tests[$storage.current].pm">
+        N
+      </label>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">P<sub>eL</sub></span>
+        <input type="number" placeholder="Lower yield point" ng-model="$storage.tests[$storage.current].pel">
+        N
+      </label>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">P<sub>eH</sub></span>
+        <input type="number" placeholder="Higher yield point" ng-model="$storage.tests[$storage.current].peh">
+        N
+      </label>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+        <span class="input-label">P<sub>u</sub></span>
+        <input type="number" placeholder="Breaking force" ng-model="$storage.tests[$storage.current].pu">
+        N
+      </label>
+    </div>
+
+    <div id="tensileTest-markdown2" class="show-list-numbers-and-dots">
+
+      <div class="row header">
+        <div class="col">#</div>
+        <div class="col">P</div>
+        <div class="col">L1</div>
+        <div class="col">L2</div>
+        <div class="col"></div>
+      </div>
+      <div class="row" ng-repeat="row in $storage.tests[$storage.current].input">
+        <div class="col">{{$index + 1}}</div>
+        <div class="col">{{row.p}}</div>
+        <div class="col">{{row.l1}}</div>
+        <div class="col">{{row.l2}}</div>
+        <div class="col">
+          <button class="button button-assertive" ng-click="remove(row)">Remove</button>
+        </div>
+      </div>
+    </div>
     <div id="inputSummary-button-bar5" class="button-bar">
       <a ui-sref="tensileTest" id="inputSummary-button27" class="button button-positive  button-block icon-left ion-android-arrow-up">List</a>
       <a ui-sref="menu.results" id="inputSummary-button21" class="button button-positive  button-block icon-right ion-arrow-graph-up-right">Results</a>
