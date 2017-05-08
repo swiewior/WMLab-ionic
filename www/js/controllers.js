@@ -105,12 +105,10 @@ function ($scope, $stateParams, $localStorage, $location) {
     var arr = ['l0', 'd0', 'du', 'lu', 'pm', 'pel', 'peh', 'pu', 'input'];
     var test = $localStorage.tests[$localStorage.current];
     for (i in arr) {
-      if(test.hasOwnProperty(arr[i])){
-        if (test[arr[i]] == null) {
-          test.completed = 'no';
-          alert("Fill all inputs");
-          return
-        }
+      if (test[arr[i]] == null) {
+        test.completed = 'no';
+        alert("Fill all inputs");
+        return
       }
     }
     test.completed = 'yes';
