@@ -15,8 +15,8 @@
           <div class="col">{{test.date}}</div>
           <div class="col">{{test.completed}}</div>
           <div class="col">
-            <button class="button button-positive" ng-click="ctrl.edit(data.id)">Edit</button>
-            <button class="button button-assertive" ng-click="ctrl.remove(data.id)">Remove</button>
+            <button ui-sref="menu.inputSummary" class="button button-positive" ng-click="edit($index)">Edit</button>
+            <button class="button button-assertive" ng-click="remove($index)">Remove</button>
           </div>
         </div>
       </div>

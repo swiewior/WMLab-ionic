@@ -3,15 +3,15 @@
     <h id="wizardStep2-heading3" style="color:#000000;font-weight:400;">Input data from testing machine</h>
     <form id="wizardStep2-form4" class="list">
       <label class="item item-input" id="wizardStep2-input9">
-        <span class="input-label">P</span>
+        <span class="input-label">P [dN]</span>
         <input type="number" placeholder="Force" ng-model="data.p">
       </label>
       <label class="item item-input" id="wizardStep2-input10">
-        <span class="input-label">L<sub>1</sub></span>
+        <span class="input-label">L<sub>1</sub> [mm]</span>
         <input type="number" placeholder="Extensometer 1" ng-model="data.l1">
       </label>
       <label class="item item-input" id="wizardStep2-input11">
-        <span class="input-label">L<sub>2</sub></span>
+        <span class="input-label">L<sub>2</sub> [mm]</span>
         <input type="number" placeholder="Extensometer 2" ng-model="data.l2">
       </label>
       <button id="wizardStep2-button16" class="button button-balanced  button-block icon-left ion-android-add-circle" ng-click="add(data)">Add</button>
@@ -25,9 +25,9 @@
 
       <div class="row header">
         <div class="col">#</div>
-        <div class="col">P</div>
-        <div class="col">L1</div>
-        <div class="col">L2</div>
+        <div class="col">P [dN]</div>
+        <div class="col">L1 [mm]</div>
+        <div class="col">L2 [mm]</div>
         <div class="col"></div>
       </div>
       <div class="row" ng-repeat="row in $storage.tests[$storage.current].input">

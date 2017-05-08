@@ -21,11 +21,22 @@ function ($scope, $stateParams, $localStorage) {
   
   $scope.create = create;
   
+  $scope.edit = function ($index) {
+    $localStorage.current = $index;
+  };
+  
+  $scope.remove = function ($index) {
+    $localStorage.tests.splice(
+      $index, 1);
+    $localStorage.counter--;
+  };
+  
   function create() {
     $localStorage.counter += 1;
     var counter = $localStorage.counter;
     
-  
+    
+    
     var test = {
       id: counter,
       date: "2017-05-07",
@@ -106,6 +117,11 @@ function ($scope, $stateParams, $localStorage) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $localStorage) {
   $scope.$storage = $localStorage;
+  
+  $scope.remove = function (index) {
+    $localStorage.tests[$localStorage.current].input.splice(
+      index, 1);
+  }
 
 }])
 
@@ -115,13 +131,14 @@ function ($scope, $stateParams, $localStorage) {
 function ($scope, $stateParams, $localStorage) {
   $scope.$storage = $localStorage;
   //var $d0, $du, $l0, $lu, $s0, $pel, $peh, $pm, $pu, $su, $a10, $z, $rel, $reh, $rm, $ru, $dl1, $dl2, $dl, $sdl, $p;
+  calculate();
   
   function calculate() {
     $d0 = $localStorage.tests[$localStorage.current].d0;
-    $s0 = pi() * pow($d0, 2) / 4;
+    $s0 = Math.PI * Math.pow($d0, 2) / 4;
   
     $du = $localStorage.tests[$localStorage.current].du;
-    $su = pi() * pow($du, 2) / 4;
+    $su = Math.PI * Math.pow($du, 2) / 4;
   
     $l0 = $localStorage.tests[$localStorage.current].l0;
     $lu = $localStorage.tests[$localStorage.current].lu;
@@ -151,7 +168,9 @@ function ($scope, $stateParams, $localStorage) {
     $localStorage.tests[$localStorage.current].ru = $ru;
   
     $input_tab = $localStorage.tests[$localStorage.current].input;
-    for($i = 0; $i < $input_tab.length(); $i++) {
+    for($i = 0; $i < $input_tab.length; $i++) {
+      var $p = [], $dl1 = [], $dl2 = [], $dl = [], $sdl = [];
+      
       $p[$i] = $input_tab[$i].p;
       $dl1[$i] = $input_tab[$i].l1;
       $dl2[$i] = $input_tab[$i].l2;
@@ -175,7 +194,7 @@ function ($scope, $stateParams, $localStorage) {
         s_dl: $sdl[$i]
       };
       
-      $localStorage.tests[$localStorage.current].result.push($row)
+      $localStorage.tests[$localStorage.current].output.push($row)
     }
   }
 

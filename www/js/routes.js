@@ -31,6 +31,16 @@ angular.module('app.routes', [])
       }
     }
   })
+  
+  .state('menu.wizardStep2', {
+    url: '/step2',
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/wizardStep2.html',
+        controller: 'wizardStep2Ctrl'
+      }
+    }
+  })
 
   .state('menu.wizardStep3', {
     url: '/step3',
@@ -61,17 +71,7 @@ angular.module('app.routes', [])
       }
     }
   })
-
-  .state('menu.wizardStep2', {
-    url: '/step2',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/wizardStep2.html',
-        controller: 'wizardStep2Ctrl'
-      }
-    }
-  })
-
+  
   .state('menu.inputSummary', {
     url: '/input',
     views: {

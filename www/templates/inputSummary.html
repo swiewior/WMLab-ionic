@@ -61,9 +61,9 @@
 
       <div class="row header">
         <div class="col">#</div>
-        <div class="col">P</div>
-        <div class="col">L1</div>
-        <div class="col">L2</div>
+        <div class="col">P [N]</div>
+        <div class="col">L1 [N]</div>
+        <div class="col">L2 [N]</div>
         <div class="col"></div>
       </div>
       <div class="row" ng-repeat="row in $storage.tests[$storage.current].input">
@@ -72,7 +72,7 @@
         <div class="col">{{row.l1}}</div>
         <div class="col">{{row.l2}}</div>
         <div class="col">
-          <button class="button button-assertive" ng-click="remove(row)">Remove</button>
+          <button class="button button-assertive" ng-click="remove($index)">Remove</button>
         </div>
       </div>
     </div>
