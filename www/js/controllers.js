@@ -126,6 +126,12 @@ function ($scope, $stateParams, $localStorage) {
   sortInput();
   calculate();
   
+  $(document).ready(function() {
+    document.getElementById("flot-line-chart").style.height = "300px";
+    var offset = 0;
+    plot();
+  });
+  
   function sortInput() {
     var input = $localStorage.tests[$localStorage.current].input;
     input.sort( function(a, b) {
@@ -170,13 +176,13 @@ function ($scope, $stateParams, $localStorage) {
     $localStorage.tests[$localStorage.current].output = [];
     input_tab = $localStorage.tests[$localStorage.current].input;
     var $p = [], $dl1 = [], $dl2 = [], $dl = [], $sdl = [];
-    for(i = 0; i < input_tab.length; i++) {
-      
+    for (i = 0; i < input_tab.length; i++) {
+    
       $p[i] = input_tab[i].p;
       $dl1[i] = input_tab[i].l1;
       $dl2[i] = input_tab[i].l2;
     
-      if(i !== 0) {
+      if (i !== 0) {
         $dl1[i] -= input_tab[i - 1].l1;
         $dl2[i] -= input_tab[i - 1].l2;
       }
@@ -184,9 +190,9 @@ function ($scope, $stateParams, $localStorage) {
       $dl[i] = ($dl1[i] + $dl2[i]) / (2 * 100);
       $sdl[i] = $dl[i];
     
-      if(i !== 0)
-        $sdl[i] += $sdl[i-1];
-  
+      if (i !== 0)
+        $sdl[i] += $sdl[i - 1];
+    
       row = {
         p: $p[i],
         dl1: $dl1[i],
@@ -194,10 +200,60 @@ function ($scope, $stateParams, $localStorage) {
         dl_sr: $dl[i].toFixed(3),
         sdl: $sdl[i].toFixed(3)
       };
-      
+    
       $localStorage.tests[$localStorage.current].output.push(row)
     }
   }
-
-
+  
+  function plot() {
+    var p = [];
+    var output = $localStorage.tests[$localStorage.current].output;
+    for (var row in output) {
+      if (output.hasOwnProperty(row)) {
+        p.push([
+          output[row].sdl,
+          output[row].p
+        ]);
+      }
+      
+    }
+    
+    var options = {
+      series: {
+        lines: {
+          show: true
+        },
+        points: {
+          show: true
+        }
+      },
+      grid: {
+        hoverable: true //IMPORTANT! this is needed for tooltip to work
+      },
+      tooltip: true,
+      tooltipOpts: {
+        content: "P(%x.3) =  %y.2",
+        shifts: {
+          x: -60,
+          y: 25
+        }
+      },
+      axisLabels: {
+        show: true
+      },
+      xaxes: [{
+        axisLabel: 'l [mm]',
+      }],
+      yaxes: [{
+        position: 'left',
+        axisLabel: 'P [kN]',
+      }]
+    };
+  
+    var plotObj = $.plot($("#flot-line-chart"), [ {
+        data: p,
+        label: "P(l)"
+      }],
+      options);
+  }
 }])
