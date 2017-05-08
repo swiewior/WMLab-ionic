@@ -94,6 +94,4 @@ angular.module('app.routes', [])
 
 $urlRouterProvider.otherwise('/list')
 
-
-
 });

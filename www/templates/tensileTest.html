@@ -10,19 +10,25 @@
           <div class="col">Completed?</div>
           <div class="col"></div>
         </div>
-        <div class="row" ng-repeat="test in $storage.tests">
+        <div class="row" ng-repeat="test in $storage.tests" ng-click="edit($index)">
           <div class="col">{{test.id}}</div>
-          <div class="col">{{test.date}}</div>
-          <div class="col">{{test.completed}}</div>
+          <div class="col">{{test.date | date : 'medium'}}</div>
+          <div class="col" ng-if="test.completed != 'no'">
+            <button class="button button-small button-positive" ng-click="result($index)">Result</button>
+          </div>
+          <div class="col" ng-if="test.completed == 'no'">
+            <button class="button button-small button-assertive">no</button>
+          </div>
           <div class="col">
-            <button ui-sref="menu.inputSummary" class="button button-positive" ng-click="edit($index)">Edit</button>
-            <button class="button button-assertive" ng-click="remove($index)">Remove</button>
+            <button ui-sref="menu.inputSummary" class="button button-small button-positive" ng-click="edit($index)">Edit</button>
+            <button class="button button-small button-assertive" ng-click="remove($index)">Remove</button>
           </div>
         </div>
       </div>
     </div>
 
-    <a ui-sref="menu.wizardStep1" id="tensileTest-button7" class="button button-positive  button-block icon-left ion-wand" ng-click="create()">Run Test Wizard</a>
+    <a ui-sref="menu.wizardStep1" class="button button-positive  button-block icon-left ion-wand" ng-click="create()">Run Test Wizard</a>
+    <a ui-sref="menu.inputSummary" class="button button-positive  button-block icon-left ion-ios-list-outline" ng-click="create()">Input all at once</a>
     <button id="tensileTest-button10" class="button button-positive  button-block icon-left ion-android-upload">Upload data from file</button>
   </ion-content>
 </ion-view>

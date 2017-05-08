@@ -8,18 +8,14 @@ function ($scope, $stateParams) {
 
 }])
 
-.controller('tensileTestCtrl', ['$scope', '$stateParams', '$localStorage',
-  '$sessionStorage',
-function ($scope, $stateParams, $localStorage) {
-  
-  $localStorage = $localStorage.$default({
-    counter: 0,
-    tests: [],
-  });
-  
+.controller('tensileTestCtrl', ['$scope', '$stateParams', '$localStorage', '$location',
+function ($scope, $stateParams, $localStorage, $location) {
   $scope.$storage = $localStorage;
   
-  $scope.create = create;
+  $localStorage.$default({
+    counter: 0,
+    tests: []
+  });
   
   $scope.edit = function ($index) {
     $localStorage.current = $index;
@@ -31,35 +27,22 @@ function ($scope, $stateParams, $localStorage) {
     $localStorage.counter--;
   };
   
-  function create() {
-    $localStorage.counter += 1;
+  $scope.result = function ($index) {
+    $localStorage.current = $index;
+    $location.path('/menu/result');
+  };
+  
+  $scope.create = function () {
+    $localStorage.counter = $localStorage.tests.length + 1;
     var counter = $localStorage.counter;
     
-    
+    var date = new Date();
     
     var test = {
       id: counter,
-      date: "2017-05-07",
+      date: date,
       completed: "no",
-      l0: null,
-      d0: null,
-      du: null,
-      lu: null,
-      pm: null,
-      pel: null,
-      peh: null,
-      pu: null,
       input: [],
-      s0: null,
-      su: null,
-      a10: null,
-      z: null,
-      rh: null,
-      rel: null,
-      reh: null,
-      rm: null,
-      ru: null,
-      e: null,
       output: []
     };
     
@@ -78,7 +61,8 @@ function ($scope, $stateParams, $localStorage) {
   $scope.$storage = $localStorage;
   
   $scope.add = function (data) {
-    $localStorage.tests[$localStorage.current].input.push(data)
+    var temp = angular.copy(data);
+    $localStorage.tests[$localStorage.current].input.push(temp)
   };
   
   $scope.remove = function (data) {
@@ -87,42 +71,51 @@ function ($scope, $stateParams, $localStorage) {
   }
 }])
 
-.controller('wizardStep3Ctrl', ['$scope', '$stateParams', '$localStorage', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('wizardStep3Ctrl', ['$scope', '$stateParams', '$localStorage',
 function ($scope, $stateParams, $localStorage) {
   $scope.$storage = $localStorage;
 
 }])
 
-.controller('wizardStep4Ctrl', ['$scope', '$stateParams', '$localStorage', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('wizardStep4Ctrl', ['$scope', '$stateParams', '$localStorage',
 function ($scope, $stateParams, $localStorage) {
   $scope.$storage = $localStorage;
-
 }])
 
-.controller('wizardStep5Ctrl', ['$scope', '$stateParams', '$localStorage', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('wizardStep5Ctrl', ['$scope', '$stateParams', '$localStorage',
 function ($scope, $stateParams, $localStorage) {
-
-
 }])
 
 
-.controller('inputSummaryCtrl', ['$scope', '$stateParams', '$localStorage', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $localStorage) {
+.controller('inputSummaryCtrl', ['$scope', '$stateParams', '$localStorage', '$location',
+function ($scope, $stateParams, $localStorage, $location) {
   $scope.$storage = $localStorage;
+  
+  $scope.add = function (data) {
+    var temp = angular.copy(data);
+    $localStorage.tests[$localStorage.current].input.push(temp)
+  };
   
   $scope.remove = function (index) {
     $localStorage.tests[$localStorage.current].input.splice(
       index, 1);
+  };
+  
+  $scope.validate = function () {
+    var arr = ['l0', 'd0', 'du', 'lu', 'pm', 'pel', 'peh', 'pu', 'input'];
+    var test = $localStorage.tests[$localStorage.current];
+    for (i in arr) {
+      if(test.hasOwnProperty(arr[i])){
+        if (test[arr[i]] == null) {
+          test.completed = 'no';
+          alert("Fill all inputs");
+          return
+        }
+      }
+    }
+    test.completed = 'yes';
+    $location.path('/menu/result');
   }
-
 }])
 
 .controller('resultsCtrl', ['$scope', '$stateParams', '$localStorage', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -130,71 +123,79 @@ function ($scope, $stateParams, $localStorage) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $localStorage) {
   $scope.$storage = $localStorage;
-  //var $d0, $du, $l0, $lu, $s0, $pel, $peh, $pm, $pu, $su, $a10, $z, $rel, $reh, $rm, $ru, $dl1, $dl2, $dl, $sdl, $p;
+  sortInput();
   calculate();
+  
+  function sortInput() {
+    var input = $localStorage.tests[$localStorage.current].input;
+    input.sort( function(a, b) {
+      return a.p - b.p;
+    });
+  }
   
   function calculate() {
     $d0 = $localStorage.tests[$localStorage.current].d0;
-    $s0 = Math.PI * Math.pow($d0, 2) / 4;
+    s0 = Math.PI * Math.pow($d0, 2) / 4;
   
     $du = $localStorage.tests[$localStorage.current].du;
-    $su = Math.PI * Math.pow($du, 2) / 4;
+    su = Math.PI * Math.pow($du, 2) / 4;
   
     $l0 = $localStorage.tests[$localStorage.current].l0;
     $lu = $localStorage.tests[$localStorage.current].lu;
-    $a10 = ($lu - $l0) / $l0 * 100;
+    a10 = ($lu - $l0) / $l0 * 100;
   
-    $z = ($s0 - $su) / $s0 * 100;
+    z = (s0 - su) / s0 * 100;
   
     $pel = $localStorage.tests[$localStorage.current].pel;
-    $rel = $pel / $s0;
+    rel = $pel / s0;
   
     $peh = $localStorage.tests[$localStorage.current].peh;
-    $reh = $peh / $s0;
+    reh = $peh / s0;
   
     $pm = $localStorage.tests[$localStorage.current].pm;
-    $rm = $pm * 10 / $s0;
+    rm = $pm * 10 / s0;
   
     $pu = $localStorage.tests[$localStorage.current].pu;
-    $ru = $pu / $su;
+    ru = $pu / su;
   
-    $localStorage.tests[$localStorage.current].s0 = $s0;
-    $localStorage.tests[$localStorage.current].su = $su;
-    $localStorage.tests[$localStorage.current].a10 = $a10;
-    $localStorage.tests[$localStorage.current].z = $z;
-    $localStorage.tests[$localStorage.current].rel = $rel;
-    $localStorage.tests[$localStorage.current].reh = $reh;
-    $localStorage.tests[$localStorage.current].rm = $rm;
-    $localStorage.tests[$localStorage.current].ru = $ru;
+    $localStorage.tests[$localStorage.current].s0 = s0.toFixed(2);
+    $localStorage.tests[$localStorage.current].su = su.toFixed(2);
+    $localStorage.tests[$localStorage.current].a10 = a10.toFixed(2);
+    $localStorage.tests[$localStorage.current].z = z.toFixed(2);
+    $localStorage.tests[$localStorage.current].rel = rel.toFixed(2);
+    $localStorage.tests[$localStorage.current].reh = reh.toFixed(2);
+    $localStorage.tests[$localStorage.current].rm = rm.toFixed(2);
+    $localStorage.tests[$localStorage.current].ru = ru.toFixed(2);
   
-    $input_tab = $localStorage.tests[$localStorage.current].input;
-    for($i = 0; $i < $input_tab.length; $i++) {
-      var $p = [], $dl1 = [], $dl2 = [], $dl = [], $sdl = [];
+    $localStorage.tests[$localStorage.current].output = [];
+    input_tab = $localStorage.tests[$localStorage.current].input;
+    var $p = [], $dl1 = [], $dl2 = [], $dl = [], $sdl = [];
+    for(i = 0; i < input_tab.length; i++) {
       
-      $p[$i] = $input_tab[$i].p;
-      $dl1[$i] = $input_tab[$i].l1;
-      $dl2[$i] = $input_tab[$i].l2;
+      $p[i] = input_tab[i].p;
+      $dl1[i] = input_tab[i].l1;
+      $dl2[i] = input_tab[i].l2;
     
-      if($i !== 0) {
-        $dl1[$i] -= $input_tab[$i - 1].l1;
-        $dl2[$i] -= $input_tab[$i - 1].l2;
+      if(i !== 0) {
+        $dl1[i] -= input_tab[i - 1].l1;
+        $dl2[i] -= input_tab[i - 1].l2;
       }
     
-      $dl[$i] = ($dl1[$i] + $dl2[$i]) / (2 * 100);
-      $sdl[$i] = $dl[$i];
+      $dl[i] = ($dl1[i] + $dl2[i]) / (2 * 100);
+      $sdl[i] = $dl[i];
     
-      if($i !== 0)
-        $sdl[$i] += $sdl[$i-1];
+      if(i !== 0)
+        $sdl[i] += $sdl[i-1];
   
-      $row = {
-        p: $p[$i],
-        dl1: $dl1[$i],
-        dl2: $dl2[$i],
-        dl_sr: $dl[$i],
-        s_dl: $sdl[$i]
+      row = {
+        p: $p[i],
+        dl1: $dl1[i],
+        dl2: $dl2[i],
+        dl_sr: $dl[i].toFixed(3),
+        sdl: $sdl[i].toFixed(3)
       };
       
-      $localStorage.tests[$localStorage.current].output.push($row)
+      $localStorage.tests[$localStorage.current].output.push(row)
     }
   }
 

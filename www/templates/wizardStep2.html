@@ -2,15 +2,15 @@
   <ion-content padding="true" class="has-header">
     <h id="wizardStep2-heading3" style="color:#000000;font-weight:400;">Input data from testing machine</h>
     <form id="wizardStep2-form4" class="list">
-      <label class="item item-input" id="wizardStep2-input9">
+      <label class="item item-input" id="p">
         <span class="input-label">P [dN]</span>
         <input type="number" placeholder="Force" ng-model="data.p">
       </label>
-      <label class="item item-input" id="wizardStep2-input10">
+      <label class="item item-input" id="l1">
         <span class="input-label">L<sub>1</sub> [mm]</span>
         <input type="number" placeholder="Extensometer 1" ng-model="data.l1">
       </label>
-      <label class="item item-input" id="wizardStep2-input11">
+      <label class="item item-input" id="l2">
         <span class="input-label">L<sub>2</sub> [mm]</span>
         <input type="number" placeholder="Extensometer 2" ng-model="data.l2">
       </label>
@@ -36,7 +36,7 @@
         <div class="col">{{row.l1}}</div>
         <div class="col">{{row.l2}}</div>
         <div class="col">
-          <button class="button button-assertive" ng-click="remove(row)">Remove</button>
+          <button class="button button-small button-assertive" ng-click="remove(row)">Remove</button>
         </div>
       </div>
     </div>

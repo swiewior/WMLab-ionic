@@ -56,9 +56,26 @@
         N
       </label>
     </div>
+    </div>
+
+    <div>
+      <form id="wizardStep2-form4" class="list">
+        <label class="item item-input" >
+          <span class="input-label">P [dN]</span>
+          <input type="number" id="p" placeholder="Force" ng-model="data.p">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">L<sub>1</sub> [mm]</span>
+          <input type="number" id="l1" placeholder="Extensometer 1" ng-model="data.l1">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">L<sub>2</sub> [mm]</span>
+          <input type="number" id="l2" placeholder="Extensometer 2" ng-model="data.l2">
+        </label>
+        <button id="wizardStep2-button16" class="button button-balanced  button-block icon-left ion-android-add-circle" ng-click="add(data)">Add</button>
+      </form>
 
     <div id="tensileTest-markdown2" class="show-list-numbers-and-dots">
-
       <div class="row header">
         <div class="col">#</div>
         <div class="col">P [N]</div>
@@ -72,13 +89,14 @@
         <div class="col">{{row.l1}}</div>
         <div class="col">{{row.l2}}</div>
         <div class="col">
-          <button class="button button-assertive" ng-click="remove($index)">Remove</button>
+          <button class="button button-small button-assertive" ng-click="remove($index)">Remove</button>
         </div>
       </div>
     </div>
     <div id="inputSummary-button-bar5" class="button-bar">
       <a ui-sref="tensileTest" id="inputSummary-button27" class="button button-positive  button-block icon-left ion-android-arrow-up">List</a>
-      <a ui-sref="menu.results" id="inputSummary-button21" class="button button-positive  button-block icon-right ion-arrow-graph-up-right">Results</a>
+      <a id="inputSummary-button21" class="button button-positive  button-block icon-right ion-arrow-graph-up-right" ng-click="validate()">Results</a>
+    </div>
     </div>
   </ion-content>
 </ion-view>

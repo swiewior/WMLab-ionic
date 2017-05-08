@@ -1,60 +1,15 @@
 <ion-view title="Results" id="page15">
   <ion-content padding="true" class="has-header">
-    <div class="item item-input-inset">
-      <label class="item item-input-wrapper">
-        <span class="input-label">S<sub>0</sub></span>
-        <input type="number" placeholder="Initial lenght" ng-model="$storage.tests[$storage.current].s0">
-        mm
-      </label>
-    </div>
-    <div class="item item-input-inset">
-      <label class="item item-input-wrapper">
-        <span class="input-label">S<sub>u</sub></span>
-        <input type="number" placeholder="Initial Diameter" ng-model="$storage.tests[$storage.current].su">
-        mm
-      </label>
-    </div>
-    <div class="item item-input-inset">
-      <label class="item item-input-wrapper">
-        <span class="input-label">A<sub>10</sub></span>
-        <input type="number" placeholder="Final Diameter" ng-model="$storage.tests[$storage.current].a10">
-        mm
-      </label>
-    </div>
-    <div class="item item-input-inset">
-      <label class="item item-input-wrapper">
-        <span class="input-label">z</span>
-        <input type="number" placeholder="Final lenght" ng-model="$storage.tests[$storage.current].z">
-        mm
-      </label>
-    </div>
-    <div class="item item-input-inset">
-      <label class="item item-input-wrapper">
-        <span class="input-label">R<sub>H</sub></span>
-        <input type="number" placeholder="Maximum force" ng-model="$storage.tests[$storage.current].rh">
-        N
-      </label>
-    </div>
-    <div class="item item-input-inset">
-      <label class="item item-input-wrapper">
-        <span class="input-label">R<sub>eH</sub></span>
-        <input type="number" placeholder="Lower yield point" ng-model="$storage.tests[$storage.current].reh">
-        N
-      </label>
-    </div>
-    <div class="item item-input-inset">
-      <label class="item item-input-wrapper">
-        <span class="input-label">R<sub>m</sub></span>
-        <input type="number" placeholder="Higher yield point" ng-model="$storage.tests[$storage.current].rm">
-        N
-      </label>
-    </div>
-    <div class="item item-input-inset">
-      <label class="item item-input-wrapper">
-        <span class="input-label">R<sub>u</sub></span>
-        <input type="number" placeholder="Breaking force" ng-model="$storage.tests[$storage.current].ru">
-        N
-      </label>
+
+    <div class="list">
+      <div class="item">Initial area <span style="float:right;"> S<sub>0</sub> =  {{ $storage.tests[$storage.current].s0 }} mm<sup>2</sup></span></div>
+      <div class="item">Final area <span style="float:right;"> S<sub>u</sub> =  {{ $storage.tests[$storage.current].su }} mm<sup>2</sup></span></div>
+      <div class="item">Relative elognation <span style="float:right;"> A<sub>10</sub> =  {{ $storage.tests[$storage.current].a10 }} %</span></div>
+      <div class="item">Necking <span style="float:right;"> Z = {{ $storage.tests[$storage.current].z }} %</span></div>
+      <div class="item">Lower yield limit <span style="float:right;"> R<sub>eL</sub> = {{ $storage.tests[$storage.current].rel }} kPa</span></div>
+      <div class="item">Higher yield limit <span style="float:right;"> R<sub>eH</sub> = {{ $storage.tests[$storage.current].reh }} kPa</span></div>
+      <div class="item">Tensile strength <span style="float:right;"> R<sub>m</sub> = {{ $storage.tests[$storage.current].rm }} kPa</span></div>
+      <div class="item">Breaking stress <span style="float:right;"> R<sub>u</sub> = {{ $storage.tests[$storage.current].ru }} kPa</span></div>
     </div>
 
     <div id="tensileTest-markdown2" class="show-list-numbers-and-dots">
@@ -66,7 +21,6 @@
         <div class="col">dL2 [mm]</div>
         <div class="col">dl_sr [mm]</div>
         <div class="col">sdl [mm]</div>
-        <div class="col"></div>
       </div>
       <div class="row" ng-repeat="row in $storage.tests[$storage.current].output">
         <div class="col">{{$index + 1}}</div>
@@ -75,9 +29,6 @@
         <div class="col">{{row.dl2}}</div>
         <div class="col">{{row.dl_sr}}</div>
         <div class="col">{{row.sdl}}</div>
-        <div class="col">
-          <button class="button button-assertive" ng-click="remove($index)">Remove</button>
-        </div>
       </div>
     </div>
 
