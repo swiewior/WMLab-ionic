@@ -25,6 +25,9 @@ function ($scope, $stateParams, $localStorage, $location) {
     $localStorage.tests.splice(
       $index, 1);
     $localStorage.counter--;
+    for (i in $localStorage.tests) {
+      $localStorage.tests[i].id = $index;
+    }
   };
   
   $scope.result = function ($index) {
